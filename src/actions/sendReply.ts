@@ -10,4 +10,5 @@ export default async function sendReply() {
     }
 
     await addMessage(reply);
+    await new Promise(resolve => setTimeout(resolve, 3000));
 }

@@ -1,6 +1,5 @@
 import { MessageType } from "@/types/MessageType";
 import { writeFile, readFile } from "fs/promises";
-import { revalidatePath } from "next/cache";
 import path from "path";
 
 const filePath = path.join(process.cwd(), "messages.json");
