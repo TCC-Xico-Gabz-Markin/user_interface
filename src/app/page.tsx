@@ -1,27 +1,32 @@
 "use client";
 
-import { useEffect } from "react";
 import ChatBox from "@/components/chat/ChatBox";
 import UserForm from "@/components/UserForm";
-import useCreateChat from "@/hooks/chat/useCreateChat";
 import { generateRandomString } from "@/helpers/generateRandomString";
+import isChatEmpty from "@/helpers/isChatEmpty";
 
 export default function Home() {
-    const { data: chat, mutate } = useCreateChat({
+    const chat = {
         id: generateRandomString(),
         messages: []
-    });
+    };
 
-    useEffect(() => { mutate() }, []);
+    return (
+        <main className="w-full h-[calc(100vh-56px)] flex justify-center">
+            <div className="w-full h-full max-w-2xl flex flex-col justify-start">
+                <div className={`px-4 w-full max-h-full overflow-y-hidden transition-all duration-500 ${isChatEmpty(chat) ? 'h-1/2' : 'h-full'}`}>
+                    {isChatEmpty(chat) ? (
+                        <div className={"w-full h-full flex flex-col justify-end items-center"}>
+                            <h1 className="font-bold text-4xl text-center pb-2">Olá, bem vindo ao Chat Aç<span className="text-details-1">AI</span></h1>
+                            <h2 className="text-2xl text-center">Otimize queries em MySql e deixe o seu projeto mais eficiente com a nossa ferramenta!</h2>
+                        </div>
+                    ) : (
 
-    if (chat) {
-        return (
-            <main className="w-full h-[calc(100vh-56px)] flex justify-center">
-                <div className="w-full h-full max-w-2xl flex flex-col justify-start">
-                    <ChatBox chatID={chat.id} />
-                    <UserForm chatID={chat.id} redirectToChatPageOnSubmit={true} />
+                        <ChatBox chat={chat} />
+                    )}
                 </div>
-            </main>
-        );
-    }
+                <UserForm chat={chat} redirectToChatPageOnSubmit={true} />
+            </div>
+        </main>
+    );
 }

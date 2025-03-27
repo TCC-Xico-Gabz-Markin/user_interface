@@ -8,22 +8,25 @@ import { generateRandomString } from "@/helpers/generateRandomString";
 import useUpdateChat from "@/hooks/chat/useUpdateChat";
 import { MessageType } from "@/types/MessageType";
 import { useRouter } from "next/navigation";
+import { ChatType } from "@/types/ChatType";
+import useCreateChat from "@/hooks/chat/useCreateChat";
 
 type Props = {
-    chatID: string,
+    chat: ChatType,
     redirectToChatPageOnSubmit?: boolean,
 }
 
 export default function UserForm(props: Props) {
     const router = useRouter();
-    const { chatID, redirectToChatPageOnSubmit } = props;
+    const { chat, redirectToChatPageOnSubmit } = props;
     const [message, setMessage] = useState<MessageType>({
         id: generateRandomString(),
         content: "",
         sentBy: "user"
     });
 
-    const { mutateAsync } = useUpdateChat(chatID, message as MessageType)
+    const { mutateAsync: updateChat } = useUpdateChat(chat.id, message as MessageType)
+    const { mutateAsync: createChat } = useCreateChat(chat)
 
     const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
@@ -34,10 +37,11 @@ export default function UserForm(props: Props) {
 
         setMessage({ ...message, content: formElements.userInput.value });
 
-        await mutateAsync();
-        if (redirectToChatPageOnSubmit) {
-            router.push(`/${chatID}`)
-        }
+        if (redirectToChatPageOnSubmit) createChat();
+
+        await updateChat();
+
+        if (redirectToChatPageOnSubmit) router.push(`/${chat.id}`)
     }
 
     return (
