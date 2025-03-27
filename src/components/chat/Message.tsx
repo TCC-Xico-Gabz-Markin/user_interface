@@ -3,11 +3,10 @@ import { MessageType } from "@/types/MessageType";
 
 type Props = {
     message: MessageType,
-    isLoading: boolean
 }
 
 export default function Message(props: Props) {
-    const { message, isLoading } = props;
+    const { message } = props;
 
     if (message.sentBy == "user") {
         return (
@@ -21,8 +20,8 @@ export default function Message(props: Props) {
 
     if (message.sentBy == "bot") {
         return (
-            <div className="mt-2">
-                {isLoading ? (<p>Loading...</p>) : (<p>{message.content}</p>)}
+            <div className="mt-2 w-full h-fit">
+                <p>{message.content}</p>
             </div>
         )
     }

@@ -3,21 +3,20 @@
 import { IoIosSend } from "react-icons/io";
 import { Button } from "./ui/button";
 import UserInput from "./chat/UserInput";
-import sendMessage from "@/actions/sendMessage";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
-import React from "react";
+import React, { useState } from "react";
+import { generateRandomString } from "@/helpers/generateRandomString";
+import useUpdateChat from "@/hooks/chat/useUpdateChat";
+import { MessageType } from "@/types/MessageType";
 
+type Props = {
+    chatID: string
+}
 
-export default function UserForm() {
-    const queryClient = useQueryClient();
+export default function UserForm(props: Props) {
+    const { chatID } = props;
+    const [message, setMessage] = useState<MessageType | undefined>(undefined);
 
-    const { mutateAsync } = useMutation({
-        mutationFn: sendMessage,
-        onSuccess: () => {
-            queryClient.invalidateQueries({ queryKey: ['chat'] })
-        },
-    })
-
+    const { mutateAsync } = useUpdateChat(chatID, message as MessageType)
 
     const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
@@ -25,7 +24,14 @@ export default function UserForm() {
         const formElements = form.elements as typeof form.elements & {
             userInput: HTMLInputElement
         }
-        await mutateAsync(formElements.userInput.value);
+
+        setMessage({
+            id: generateRandomString(),
+            content: formElements.userInput.value,
+            sentBy: "user"
+        });
+        
+        await mutateAsync();
     }
 
     return (
