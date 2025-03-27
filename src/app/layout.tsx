@@ -12,7 +12,7 @@ export default function RootLayout({ children, }: Readonly<{ children: React.Rea
     return (
         <html lang="pt" suppressHydrationWarning>
             <QueryClientProvider client={queryClient}>
-                <body cz-shortcut-listen="true" className="w-full h-screen">
+                <body cz-shortcut-listen="true" className="w-full h-screen bg-secondary">
                     <ThemeProvider
                         attribute="class"
                         defaultTheme="system"

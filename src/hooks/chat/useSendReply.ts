@@ -5,7 +5,7 @@ export default function useSendReply(chatID: string) {
     const queryClient = useQueryClient();
 
     return useMutation({
-        mutationFn: () => sendReply(chatID),
+        mutationFn: async () => await sendReply(chatID),
         onSuccess: () => queryClient.invalidateQueries({ queryKey: ['chat'] })
     });
 }

@@ -14,11 +14,11 @@ type Props = {
 }
 
 export default function ChatBox(props: Props) {
-    const { chatID } = props;
     const chatRef = useRef<HTMLDivElement | null>(null);
+    const { chatID } = props;
 
     const { data: chat } = useQuery({
-        queryFn: () => readChatByID(chatID),
+        queryFn: async () => await readChatByID(chatID),
         queryKey: ["chat"],
     });
 
@@ -32,7 +32,7 @@ export default function ChatBox(props: Props) {
         if (userSentMessage(chat)) {
             sendReply();
         }
-    }, [chat?.messages]);
+    }, [chat]);
 
     useEffect(() => {
         if (chatRef.current) {

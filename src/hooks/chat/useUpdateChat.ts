@@ -3,11 +3,11 @@ import { ChatType } from "@/types/ChatType";
 import { MessageType } from "@/types/MessageType";
 import { useMutation, useQueryClient } from "@tanstack/react-query"
 
-export default function useUpdateChat(chatID: string, message: MessageType){
+export default function useUpdateChat(chatID: string, message: MessageType) {
     const queryClient = useQueryClient();
 
     return useMutation({
-        mutationFn: () => updateChat(chatID, message),
+        mutationFn: async () => await updateChat(chatID, message),
         onSuccess: () => {
             queryClient.invalidateQueries({ queryKey: ['chat'] })
         },

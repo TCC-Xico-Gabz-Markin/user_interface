@@ -6,7 +6,7 @@ export default function useCreateChat(chat: ChatType) {
     const queryClient = useQueryClient();
 
     return useMutation({
-        mutationFn: () => createChat(chat),
+        mutationFn: async () => await createChat(chat),
         onSuccess: () => queryClient.invalidateQueries({ queryKey: ['chat'] })
     });
 }
