@@ -5,6 +5,7 @@ import ChatBox from "@/components/chat/ChatBox";
 import UserForm from "@/components/UserForm";
 import userSentMessage from "@/helpers/userSentMessage";
 import useSendReply from "@/hooks/chat/useSendReply";
+import { ChatType } from "@/types/ChatType";
 import { useQuery } from "@tanstack/react-query";
 import { useParams } from "next/navigation";
 import { useEffect } from "react";
@@ -15,18 +16,18 @@ export default function ChatPage() {
     const params = useParams();
     const id = params.id as string;
 
+    const emptyChat: ChatType = {
+        id: id,
+        messages: []
+    }
+
     const { data: chat, isLoading } = useQuery({
         queryFn: async () => await readChatByID(id),
-        queryKey: ["chat"],
-        initialData: {
-            id: id,
-            messages: []
-        }
+        queryKey: ["chat", emptyChat.id],
+        initialData: emptyChat
     });
 
-    if (!chat) return null;
-
-    const { mutateAsync, isPending } = useSendReply(chat.id);
+    const { mutateAsync, isPending } = useSendReply(id);
 
     const sendReply = async () => {
         await mutateAsync();

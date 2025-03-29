@@ -26,7 +26,7 @@ export default function ChatBox(props: Props) {
             className="w-[calc(100%-32px)] max-h-full h-full border rounded-4xl p-4 mx-4 overflow-y-auto flex flex-col"
         >
             <div className="mt-auto"></div>
-            {chat?.messages.map((message, index) => (
+            {chat.messages.map((message, index) => (
                 <Message key={index} message={message} />
             ))}
             {isPending && (

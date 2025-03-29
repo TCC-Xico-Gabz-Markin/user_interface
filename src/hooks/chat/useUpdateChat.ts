@@ -9,7 +9,7 @@ export default function useUpdateChat(chatID: string, message: MessageType) {
     return useMutation({
         mutationFn: async () => await updateChat(chatID, message),
         onSuccess: () => {
-            queryClient.invalidateQueries({ queryKey: ['chat'] })
+            return queryClient.invalidateQueries({ queryKey: ['chat', chatID] })
         },
     })
 }

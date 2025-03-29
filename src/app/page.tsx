@@ -1,15 +1,43 @@
 "use client";
 
+import readChatByID from "@/actions/chat/readChat";
 import ChatBox from "@/components/chat/ChatBox";
 import UserForm from "@/components/UserForm";
 import { generateRandomString } from "@/helpers/generateRandomString";
 import isChatEmpty from "@/helpers/isChatEmpty";
+import userSentMessage from "@/helpers/userSentMessage";
+import useSendReply from "@/hooks/chat/useSendReply";
+import { ChatType } from "@/types/ChatType";
+import { useQuery } from "@tanstack/react-query";
+import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
 
 export default function Home() {
-    const chat = {
-        id: generateRandomString(),
+    const router = useRouter();
+    const [chatID] = useState<string>(generateRandomString());
+    const newChat: ChatType = {
+        id: chatID,
         messages: []
     };
+
+    const { data: chat } = useQuery({
+        queryFn: async () => await readChatByID(chatID),
+        queryKey: ["chat", chatID],
+        initialData: newChat
+    });
+
+    const { mutateAsync, isPending } = useSendReply(chatID);
+
+    const sendReply = async () => {
+        await mutateAsync();
+    };
+
+    useEffect(() => {
+        if (userSentMessage(chat)) {
+            sendReply();
+            router.push(`/${chat.id}`);
+        }
+    }, [chat]);
 
     return (
         <main className="w-full h-[calc(100vh-56px)] flex justify-center">
@@ -21,11 +49,10 @@ export default function Home() {
                             <h2 className="text-2xl text-center">Otimize queries em MySql e deixe o seu projeto mais eficiente com a nossa ferramenta!</h2>
                         </div>
                     ) : (
-
-                        <ChatBox chat={chat} />
+                        <ChatBox chat={chat} isPending={isPending} />
                     )}
                 </div>
-                <UserForm chat={chat} redirectToChatPageOnSubmit={true} />
+                <UserForm chat={chat} createNewChatOnSubmit={true} />
             </div>
         </main>
     );
