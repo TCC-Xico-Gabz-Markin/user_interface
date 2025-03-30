@@ -7,9 +7,7 @@ export default function useCreateChat(chat: ChatType) {
 
     return useMutation({
         mutationFn: async () => await createChat(chat),
-        onSuccess: async () => {
-            await queryClient.invalidateQueries({ queryKey: ['chat', chat.id] })
-            await queryClient.invalidateQueries({ queryKey: ['chatList'] })
-        }
+        onSuccess: async () => await queryClient.invalidateQueries({ queryKey: ['chat', chat.id] })
+
     });
 }

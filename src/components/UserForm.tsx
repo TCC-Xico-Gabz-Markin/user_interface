@@ -10,6 +10,7 @@ import { MessageType } from "@/types/MessageType";
 import { ChatType } from "@/types/ChatType";
 import useCreateChat from "@/hooks/chat/useCreateChat";
 
+
 type Props = {
     chat: ChatType,
     createNewChatOnSubmit?: boolean,

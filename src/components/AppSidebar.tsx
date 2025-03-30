@@ -11,7 +11,7 @@ import { AiOutlineLoading3Quarters } from "react-icons/ai";
 export default function AppSideBar() {
     const { data: chatList, isLoading } = useQuery({
         queryFn: async () => await readChatList(),
-        queryKey: ["chatList"]
+        queryKey: ["chatList"],
     });
 
     useEffect(() => {
@@ -33,7 +33,7 @@ export default function AppSideBar() {
                     ) : (
                         chatList === undefined || chatList.length === 0 ? (
                             <div className="w-full h-fit p-3 flex justify-center items-center">
-                                <p>no chatlist</p>
+                                <p>no chats yet</p>
                             </div>
                         ) : (
                             chatList.map(chat => (
