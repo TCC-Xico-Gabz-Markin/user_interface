@@ -18,28 +18,31 @@ type Props = {
 
 export default function UserForm(props: Props) {
     const { chat, createNewChatOnSubmit } = props;
+    const [messageID] = useState<string>(generateRandomString());
     const [message, setMessage] = useState<MessageType>({
-        id: generateRandomString(),
+        id: messageID,
         content: "",
         sentBy: SentByEnum.USER
     });
+    const [resetInput, setResetInput] = useState(false);
 
-    const { mutateAsync: updateChat } = useUpdateChat(chat.id, message)
-    const { mutateAsync: createChat } = useCreateChat(chat)
+    const { mutateAsync: updateChat } = useUpdateChat(chat.id, message);
+    const { mutateAsync: createChat } = useCreateChat(chat);
 
     const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-        const form = event.currentTarget
+        const form = event.currentTarget;
         const formElements = form.elements as typeof form.elements & {
-            userInput: HTMLInputElement
-        }
+            userInput: HTMLInputElement;
+        };
 
         setMessage({ ...message, content: formElements.userInput.value });
+        setResetInput(true);
 
         if (createNewChatOnSubmit) await createChat();
-
         await updateChat();
-    }
+
+    };
 
     return (
         <div className="w-full p-4 flex justify-center h-fit">
@@ -51,8 +54,10 @@ export default function UserForm(props: Props) {
                     id="userInput"
                     name="userInput"
                     placeholder="Pergunte alguma coisa..."
+                    reset={resetInput}
+                    onResetHandled={() => setResetInput(false)}
                 />
-                <Button size="icon" type="submit" ><IoIosSend /></Button>
+                <Button size="icon" type="submit"><IoIosSend /></Button>
             </form>
         </div>
     );

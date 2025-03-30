@@ -8,13 +8,12 @@ import isChatEmpty from "@/helpers/isChatEmpty";
 import userSentMessage from "@/helpers/userSentMessage";
 import useSendReply from "@/hooks/chat/useSendReply";
 import { ChatType } from "@/types/ChatType";
-import { useQuery, useQueryClient } from "@tanstack/react-query";
+import { useQuery } from "@tanstack/react-query";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
 export default function Home() {
     const router = useRouter();
-    const queryClient = useQueryClient();
     const [chatID] = useState<string>(generateRandomString());
     const newChat: ChatType = {
         id: chatID,
@@ -31,12 +30,12 @@ export default function Home() {
 
     const sendReply = async () => {
         await mutateAsync();
+        router.push(`/${chat.id}`);
     };
 
     useEffect(() => {
         if (userSentMessage(chat)) {
-            sendReply();
-            router.push(`/${chat.id}`);
+            sendReply()
         }
     }, [chat]);
 

@@ -10,6 +10,7 @@ import { sortChatListByUpdatedAt } from "@/helpers/sortChat";
 
 
 export default function AppSideBar() {
+
     const { data: chatList, isLoading } = useQuery({
         queryFn: async () => await readChatList(),
         queryKey: ["chatList"],

@@ -3,13 +3,14 @@
 import { useEffect, useRef, useState } from "react";
 
 type Props = {
-    placeholder?: string,
-    name: string,
-    id: string
-}
+    placeholder?: string;
+    name: string;
+    id: string;
+    reset?: boolean;
+    onResetHandled?: () => void;
+};
 
-export default function UserInput(props: Props) {
-    const { placeholder, name, id} = props
+export default function UserInput({ placeholder, name, id, reset, onResetHandled }: Props) {
     const [value, setValue] = useState('');
     const textareaRef = useRef<HTMLTextAreaElement>(null);
 
@@ -20,18 +21,23 @@ export default function UserInput(props: Props) {
         }
     }, [value]);
 
-    const handleChange = (event: React.ChangeEvent<HTMLTextAreaElement> ) => {
+    useEffect(() => {
+        if (reset) {
+            setValue('');
+            onResetHandled?.();
+        }
+    }, [reset, onResetHandled]);
+
+    const handleChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
         setValue(event.target.value);
     };
 
     const onEnterPress = (event: React.KeyboardEvent<HTMLTextAreaElement>) => {
-        if(event.key === "Enter" && event.shiftKey === false){
+        if (event.key === "Enter" && !event.shiftKey) {
             event.preventDefault();
-            const userFormElement: HTMLFormElement = document.getElementById(id)?.parentElement as HTMLFormElement
-            userFormElement.requestSubmit();
-            setValue("");
+            (document.getElementById(id)?.parentElement as HTMLFormElement).requestSubmit();
         }
-      }
+    };
 
     return (
         <textarea
@@ -44,5 +50,5 @@ export default function UserInput(props: Props) {
             onChange={handleChange}
             onKeyDown={onEnterPress}
         />
-    )
+    );
 }
