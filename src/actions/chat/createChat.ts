@@ -8,9 +8,16 @@ import path from "path";
 const filePath = path.join(process.cwd(), "messages.json");
 
 export default async function createChat(chat: ChatType) {
-    try {
-        let chatList: ChatType[] = [];
+    let chatList: ChatType[] = [];
+    const now = new Date(Date.now());
 
+    chat = {
+        ...chat,
+        createdAt: now,
+        updatedAt: now
+    }
+
+    try {
         try {
             const data = await readFile(filePath, "utf-8");
             chatList = JSON.parse(data);
@@ -20,9 +27,10 @@ export default async function createChat(chat: ChatType) {
 
         chatList.push(chat);
         await writeFile(filePath, JSON.stringify(chatList, null, 2));
-        
+
         return chat;
     } catch (error) {
         console.error("Error while creating new chat:", error);
+        return chat;
     }
 }

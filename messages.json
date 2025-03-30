@@ -1,137 +1,140 @@
 [
   {
-    "id": "9sPBEX4el5",
+    "id": "WkCITD2YjR",
     "messages": [
       {
-        "id": "I6MFapsRqz",
-        "content": "tseting",
+        "id": "EVqqkn94uA",
+        "content": "testing new chat creation",
         "sentBy": "user"
       },
       {
-        "id": "zYp4d1KyhG",
+        "id": "o34ehiHdc0",
+        "content": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam commodi, rem veniam amet, corrupti, excepturi iusto rerum doloribus numquam pariatur repudiandae illo ullam sapiente reiciendis voluptatem aspernatur beatae iure? Tempora!",
+        "sentBy": "bot"
+      },
+      {
+        "id": "11QObTTqAx",
+        "content": "testing updating chat",
+        "sentBy": "user"
+      },
+      {
+        "id": "ouxHJUyxy8",
+        "content": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam commodi, rem veniam amet, corrupti, excepturi iusto rerum doloribus numquam pariatur repudiandae illo ullam sapiente reiciendis voluptatem aspernatur beatae iure? Tempora!",
+        "sentBy": "bot"
+      },
+      {
+        "id": "11QObTTqAx",
+        "content": "testing updating chat 2",
+        "sentBy": "user"
+      },
+      {
+        "id": "22ZMrVAyVe",
+        "content": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam commodi, rem veniam amet, corrupti, excepturi iusto rerum doloribus numquam pariatur repudiandae illo ullam sapiente reiciendis voluptatem aspernatur beatae iure? Tempora!",
+        "sentBy": "bot"
+      },
+      {
+        "id": "11QObTTqAx",
+        "content": "qwertyuiop",
+        "sentBy": "user"
+      },
+      {
+        "id": "YD7DW43sW5",
+        "content": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam commodi, rem veniam amet, corrupti, excepturi iusto rerum doloribus numquam pariatur repudiandae illo ullam sapiente reiciendis voluptatem aspernatur beatae iure? Tempora!",
+        "sentBy": "bot"
+      },
+      {
+        "id": "11QObTTqAx",
+        "content": "testing new update method",
+        "sentBy": "user"
+      },
+      {
+        "id": "03m93COvTF",
+        "content": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam commodi, rem veniam amet, corrupti, excepturi iusto rerum doloribus numquam pariatur repudiandae illo ullam sapiente reiciendis voluptatem aspernatur beatae iure? Tempora!",
+        "sentBy": "bot"
+      },
+      {
+        "id": "2wzG77Z1QS",
+        "content": "dasdsadasdas",
+        "sentBy": "user"
+      },
+      {
+        "id": "vTFbIxTSTW",
         "content": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam commodi, rem veniam amet, corrupti, excepturi iusto rerum doloribus numquam pariatur repudiandae illo ullam sapiente reiciendis voluptatem aspernatur beatae iure? Tempora!",
         "sentBy": "bot"
       }
-    ]
+    ],
+    "createdAt": "2025-03-30T21:32:15.278Z",
+    "updatedAt": "2025-03-30T21:51:36.221Z"
   },
   {
-    "id": "mpDwNiHFak",
+    "id": "bM3mMCfotm",
     "messages": [
       {
-        "id": "J7fEKCgvGH",
-        "content": "testing new invalidate",
+        "id": "wHuMC70Bf2",
+        "content": "creating new chat",
         "sentBy": "user"
       },
       {
-        "id": "vsc2U2p4c6",
+        "id": "oALZ2jkwVv",
         "content": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam commodi, rem veniam amet, corrupti, excepturi iusto rerum doloribus numquam pariatur repudiandae illo ullam sapiente reiciendis voluptatem aspernatur beatae iure? Tempora!",
         "sentBy": "bot"
       },
       {
-        "id": "y30aNzE4dE",
-        "content": "testeing browser",
+        "id": "4XzMAeTlt2",
+        "content": "dsadasdasdadadas",
         "sentBy": "user"
       },
       {
-        "id": "PdhI2tsrdG",
+        "id": "FBgFtuDMYt",
         "content": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam commodi, rem veniam amet, corrupti, excepturi iusto rerum doloribus numquam pariatur repudiandae illo ullam sapiente reiciendis voluptatem aspernatur beatae iure? Tempora!",
         "sentBy": "bot"
       }
-    ]
+    ],
+    "createdAt": "2025-03-30T21:39:17.662Z",
+    "updatedAt": "2025-03-30T21:53:48.302Z"
   },
   {
-    "id": "IzxWFn29pC",
+    "id": "M7wlZ3zMBb",
     "messages": [
       {
-        "id": "G3rMl4GQY6",
-        "content": "testing browser",
+        "id": "otpKqlLkgQ",
+        "content": "testing new chat creation 2",
         "sentBy": "user"
       },
       {
-        "id": "tRyiLwWF0s",
+        "id": "0ZAo2JOwjC",
+        "content": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam commodi, rem veniam amet, corrupti, excepturi iusto rerum doloribus numquam pariatur repudiandae illo ullam sapiente reiciendis voluptatem aspernatur beatae iure? Tempora!",
+        "sentBy": "bot"
+      },
+      {
+        "id": "qOh0B6vkww",
+        "content": "testing new update",
+        "sentBy": "user"
+      },
+      {
+        "id": "oyvPXoLf7s",
         "content": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam commodi, rem veniam amet, corrupti, excepturi iusto rerum doloribus numquam pariatur repudiandae illo ullam sapiente reiciendis voluptatem aspernatur beatae iure? Tempora!",
         "sentBy": "bot"
       }
-    ]
+    ],
+    "createdAt": "2025-03-30T21:40:30.621Z",
+    "updatedAt": "2025-03-30T21:41:36.242Z"
   },
   {
-    "id": "ePJBF2WQsL",
+    "id": "3wVSewGCGa",
     "messages": [
       {
-        "id": "St3fqez4L3",
-        "content": "testing windows focus",
+        "id": "yORtiPoNI0",
+        "content": "testing sidebar",
         "sentBy": "user"
       },
       {
-        "id": "aGxyY593kK",
+        "id": "7BDWlFvGam",
         "content": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam commodi, rem veniam amet, corrupti, excepturi iusto rerum doloribus numquam pariatur repudiandae illo ullam sapiente reiciendis voluptatem aspernatur beatae iure? Tempora!",
         "sentBy": "bot"
       }
-    ]
-  },
-  {
-    "id": "0ISj9iqrl1",
-    "messages": [
-      {
-        "id": "wHJGv8mZNA",
-        "content": "testing refetch queries",
-        "sentBy": "user"
-      },
-      {
-        "id": "AZwLngicWB",
-        "content": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam commodi, rem veniam amet, corrupti, excepturi iusto rerum doloribus numquam pariatur repudiandae illo ullam sapiente reiciendis voluptatem aspernatur beatae iure? Tempora!",
-        "sentBy": "bot"
-      }
-    ]
-  },
-  {
-    "id": "HYbJcklSYI",
-    "messages": [
-      {
-        "id": "RXyqQZkX7n",
-        "content": "logging",
-        "sentBy": "user"
-      },
-      {
-        "id": "sisSGpAmOh",
-        "content": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam commodi, rem veniam amet, corrupti, excepturi iusto rerum doloribus numquam pariatur repudiandae illo ullam sapiente reiciendis voluptatem aspernatur beatae iure? Tempora!",
-        "sentBy": "bot"
-      }
-    ]
-  },
-  {
-    "id": "5OSezryEfs",
-    "messages": [
-      {
-        "id": "LM1TObmMSP",
-        "content": "testing new invalidate query",
-        "sentBy": "user"
-      },
-      {
-        "id": "jirCLPwxty",
-        "content": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam commodi, rem veniam amet, corrupti, excepturi iusto rerum doloribus numquam pariatur repudiandae illo ullam sapiente reiciendis voluptatem aspernatur beatae iure? Tempora!",
-        "sentBy": "bot"
-      },
-      {
-        "id": "QyScUCTgwb",
-        "content": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam commodi, rem veniam amet, corrupti, excepturi iusto rerum doloribus numquam pariatur repudiandae illo ullam sapiente reiciendis voluptatem aspernatur beatae iure? Tempora!",
-        "sentBy": "bot"
-      }
-    ]
-  },
-  {
-    "id": "rJ6okfvHdw",
-    "messages": [
-      {
-        "id": "mRIgJOiNFc",
-        "content": "testing double response",
-        "sentBy": "user"
-      },
-      {
-        "id": "DuCRJlPeVc",
-        "content": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam commodi, rem veniam amet, corrupti, excepturi iusto rerum doloribus numquam pariatur repudiandae illo ullam sapiente reiciendis voluptatem aspernatur beatae iure? Tempora!",
-        "sentBy": "bot"
-      }
-    ]
+    ],
+    "createdAt": "2025-03-30T21:51:23.091Z",
+    "updatedAt": "2025-03-30T21:51:23.995Z"
   }
 ]

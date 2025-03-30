@@ -39,20 +39,19 @@ export default function ChatPage() {
         }
     }, [chat]);
 
-    if (typeof (id) === "string" && chat) {
-        return (
-            <main className="w-full h-[calc(100vh-56px)] flex justify-center">
-                <div className="w-full h-full max-w-2xl flex flex-col justify-start">
-                    {isLoading ? (
-                        <div className="w-full h-full p-3">
-                            <AiOutlineLoading3Quarters className="animate-spin" />
-                        </div>
-                    ) : (
-                        <ChatBox chat={chat} isPending={isPending} />
-                    )}
-                    <UserForm chat={chat} />
-                </div>
-            </main>
-        );
-    }
+    return (
+        <main className="w-full h-[calc(100vh-56px)] flex justify-center">
+            <div className="w-full h-full max-w-3xl flex flex-col justify-start">
+                {isLoading ? (
+                    <div className="w-full h-full p-3">
+                        <AiOutlineLoading3Quarters className="animate-spin" />
+                    </div>
+                ) : (
+                    <ChatBox chat={chat} isPending={isPending} />
+                )}
+                <UserForm chat={chat} />
+            </div>
+        </main>
+    );
+    
 }

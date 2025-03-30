@@ -2,5 +2,7 @@ import { MessageType } from "./MessageType"
 
 export type ChatType = {
     id: string,
-    messages: MessageType[]
+    messages: MessageType[],
+    createdAt?: Date
+    updatedAt?: Date
 }

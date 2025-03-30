@@ -6,6 +6,7 @@ import { Sidebar, SidebarContent, SidebarGroup, SidebarHeader, SidebarMenuButton
 import { readChatList } from "@/actions/chat/readChat";
 import { useEffect } from "react";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
+import { sortChatListByUpdatedAt } from "@/helpers/sortChat";
 
 
 export default function AppSideBar() {
@@ -36,7 +37,7 @@ export default function AppSideBar() {
                                 <p>no chats yet</p>
                             </div>
                         ) : (
-                            chatList.map(chat => (
+                            sortChatListByUpdatedAt(chatList).map(chat => (
                                 <a href={`/${chat.id}`} key={chat.id}>
                                     <SidebarMenuButton>
                                         <p className="truncate" >{chat?.messages[0]?.content}</p>

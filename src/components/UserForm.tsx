@@ -6,7 +6,7 @@ import UserInput from "./chat/UserInput";
 import React, { useState } from "react";
 import { generateRandomString } from "@/helpers/generateRandomString";
 import useUpdateChat from "@/hooks/chat/useUpdateChat";
-import { MessageType } from "@/types/MessageType";
+import { MessageType, SentByEnum } from "@/types/MessageType";
 import { ChatType } from "@/types/ChatType";
 import useCreateChat from "@/hooks/chat/useCreateChat";
 
@@ -21,7 +21,7 @@ export default function UserForm(props: Props) {
     const [message, setMessage] = useState<MessageType>({
         id: generateRandomString(),
         content: "",
-        sentBy: "user"
+        sentBy: SentByEnum.USER
     });
 
     const { mutateAsync: updateChat } = useUpdateChat(chat.id, message)
