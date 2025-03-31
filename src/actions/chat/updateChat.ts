@@ -10,6 +10,7 @@ const filePath = path.join(process.cwd(), "messages.json");
 export default async function updateChat(chatID: string, message: MessageType) {
     try {
         let chatList: ChatType[] = [];
+        const now = Date.now()
 
         try {
             const data = await readFile(filePath, "utf-8");
@@ -19,8 +20,12 @@ export default async function updateChat(chatID: string, message: MessageType) {
         }
 
         const chat = chatList.find(chat => chat.id === chatID);
-        chat?.messages.push(message);
-        
+
+        if (!chat) return
+
+        chat.messages.push(message);
+        chat.updatedAt = new Date(now);
+
         await writeFile(filePath, JSON.stringify(chatList, null, 2));
     } catch (error) {
         console.log(`Error while updating chat with message ${message.id}`, error);

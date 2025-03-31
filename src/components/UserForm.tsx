@@ -6,33 +6,43 @@ import UserInput from "./chat/UserInput";
 import React, { useState } from "react";
 import { generateRandomString } from "@/helpers/generateRandomString";
 import useUpdateChat from "@/hooks/chat/useUpdateChat";
-import { MessageType } from "@/types/MessageType";
+import { MessageType, SentByEnum } from "@/types/MessageType";
+import { ChatType } from "@/types/ChatType";
+import useCreateChat from "@/hooks/chat/useCreateChat";
+
 
 type Props = {
-    chatID: string
+    chat: ChatType,
+    createNewChatOnSubmit?: boolean,
 }
 
 export default function UserForm(props: Props) {
-    const { chatID } = props;
-    const [message, setMessage] = useState<MessageType | undefined>(undefined);
+    const { chat, createNewChatOnSubmit } = props;
+    const [messageID] = useState<string>(generateRandomString());
+    const [message, setMessage] = useState<MessageType>({
+        id: messageID,
+        content: "",
+        sentBy: SentByEnum.USER
+    });
+    const [resetInput, setResetInput] = useState(false);
 
-    const { mutateAsync } = useUpdateChat(chatID, message as MessageType)
+    const { mutateAsync: updateChat } = useUpdateChat(chat.id, message);
+    const { mutateAsync: createChat } = useCreateChat(chat);
 
     const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-        const form = event.currentTarget
+        const form = event.currentTarget;
         const formElements = form.elements as typeof form.elements & {
-            userInput: HTMLInputElement
-        }
+            userInput: HTMLInputElement;
+        };
 
-        setMessage({
-            id: generateRandomString(),
-            content: formElements.userInput.value,
-            sentBy: "user"
-        });
-        
-        await mutateAsync();
-    }
+        setMessage({ ...message, content: formElements.userInput.value });
+        setResetInput(true);
+
+        if (createNewChatOnSubmit) await createChat();
+        await updateChat();
+
+    };
 
     return (
         <div className="w-full p-4 flex justify-center h-fit">
@@ -44,8 +54,10 @@ export default function UserForm(props: Props) {
                     id="userInput"
                     name="userInput"
                     placeholder="Pergunte alguma coisa..."
+                    reset={resetInput}
+                    onResetHandled={() => setResetInput(false)}
                 />
-                <Button size="icon" type="submit" ><IoIosSend /></Button>
+                <Button size="icon" type="submit"><IoIosSend /></Button>
             </form>
         </div>
     );
